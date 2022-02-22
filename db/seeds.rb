@@ -8,9 +8,10 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Create users using faker
 User.destroy_all
+Tour.destroy_all
 
+# Create users using faker
 10.times do |_n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -23,9 +24,8 @@ User.destroy_all
 end
 
 
-# Create tours
-Tour.destroy_all
 
+# Create tours
 users = User.all
 users.each do |user|
   title = Faker::BossaNova.song
@@ -44,4 +44,15 @@ users.each do |user|
   })
   tour.save
   puts "Created tour with the title: #{tour.title}, at #{tour.date}. 🌱"
+end
+
+10.times do |_n|
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.email
+  password = "test1234"
+  user = User.new({first_name: first_name, last_name: last_name, email: email, password: password})
+  user.save
+  user.errors.messages
+  puts "We just created #{user.first_name} 🌱"
 end
