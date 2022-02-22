@@ -1,0 +1,98 @@
+.container h2 {
+  font-family: 'Abril Fatface', cursive;
+}
+
+.card-title {
+  font-family: 'Abril Fatface', cursive;
+}
+.container {
+display: block;
+}
+.container-image {
+  width: auto;
+  text-align: center;
+  padding: 15px;
+}
+
+.content {
+  display:flexbox;
+}
+
+.card-product {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: 'Abril Fatface', cursive;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  margin: 0 auto;
+  width: 200px;
+}
+
+.card-product-infos {
+  border-color: red;
+}
+
+.card-title-top .menu-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0px;
+}
+
+.card-title-top .menu-bottom li {
+  list-style-type: none;
+  display: inline;
+}
+
+.card-product ul {
+  padding-left: 0px;
+}
+
+.card-product li {
+  display: inline;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0px;
+}
+
+.card-title li{
+  list-style-type: none;
+  display: inline;
+}
+
+.menu li{
+    list-style-type: none;
+    display: inline;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0px;
+}
