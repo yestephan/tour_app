@@ -47,30 +47,29 @@
       </div>
     </div>
     <div class="row">
-
-      <div class="col-md-3">
+      <% @tours.each do |tour| %>
+      <div class="col-md-3 tour-card">
         <div class="row">
-          <h6>Tour name</h6>
+          <h6><%= tour.title %></h6>
         </div>
         <div class="row">
-          <p>Tour location</p>
-        </div>
-
-        <div class="row">
-          <p>22/02/2022 17:00 - 2 hours</p>
+          <p><%= tour.location %></p>
         </div>
 
         <div class="row">
-          <p>English</p>
+          <p><%= "#{tour.date.to_formatted_s(:short)} #{tour.start_time.to_formatted_s(:time)} - #{tour.duration / 3600} hours" %></p>
         </div>
 
         <div class="row">
-          <p>89 euros</p>
+          <p><%= tour.language %></p>
+        </div>
+
+        <div class="row">
+          <p><%= number_to_currency(tour.price, :unit => "€ ", :separator => ",", :delimiter => ".") %></p>
         </div>
 
       </div>
-
-
+      <% end %>
     </div>
   </div>
 </div>
