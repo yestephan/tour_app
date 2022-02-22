@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  # before_action :set_list, only: [:show, :edit, :update, :destroy]
   def index
     @tours = Tour.all
   end
@@ -14,14 +14,34 @@ class ToursController < ApplicationController
 
   def create
     @tour = Tour.new(tour_params)
+    @tour.user = @user
     @tour.save
 
-    redirect_to root_path
+    if @tour.save!
+      redirect_to profile_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @tour = Tour.find(params[:id])
+    render :new
   end
 
   def update
-    @tour.update(tour_params)
-    redirect_to root_path
+    @tour = Tour.find(params[:id])
+    if @tour.update(tour_params)
+      redirect_to profile_path
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @tour = Tour.find(params[:id])
+    @tour.destroy
+    redirect_to profile_path
   end
 
   private

@@ -1,2 +1,50 @@
-<h1>Tours#new</h1>
-<p>Find me in app/views/tours/new.html.erb</p>
+<div>
+  <h1>Tour</h1>
+  <%= form_for @tour do |f| %>
+    <div class="row gy-3">
+      <div class="col-md-12">
+        <%= f.label :title, "Title:" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="col-md-12">
+        <%= f.label :location, "Location:" %>
+        <%= f.text_field :location, class: "form-control" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :date, "Date:" %>
+        <%= f.date_field :date, class: "form-control" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :start_time, "Time:" %>
+        <%= f.time_field :start_time, class: "form-control" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :duration, "Duration:" %>
+        <%= f.number_field :duration, class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.label :language, "Language:" %>
+        <%= f.text_field :language, class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.label :price, "Price:" %>
+        <%= f.number_field :price, class: "form-control" %>
+      </div>
+
+      <div class="col-md-12">
+        <%= f.label :description, "Description:" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="col-md-12">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

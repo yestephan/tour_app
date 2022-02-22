@@ -1,9 +1,6 @@
 class ProfilesController < ApplicationController
   def show
-    # user = current_user
-
-    @user = User.take
-    @tours = @user.tours
+    # @user = ...
   end
 
   def edit
