@@ -10,8 +10,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
+    <div class="container">
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    </div>
   </body>
 </html>
