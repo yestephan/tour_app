@@ -56,4 +56,3 @@ end
   user.errors.messages
   puts "We just created #{user.first_name} 🌱"
 end
->>>>>>> master
