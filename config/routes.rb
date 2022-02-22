@@ -8,5 +8,4 @@ Rails.application.routes.draw do
 
   get "/profile", to: "profiles#show"
   get "/profile/edit", to: "profiles#edit"
-
 end
