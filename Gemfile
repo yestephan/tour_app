@@ -73,6 +73,10 @@ gem 'devise'
 # Faker gem
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
+
+# Gemfile
+gem "geocoder"
+
 # dotenv gem for security.
 gem 'dotenv-rails'
 
