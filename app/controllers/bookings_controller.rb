@@ -3,17 +3,23 @@ class BookingsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
   end
 
   def create
-  end
+    @tour = Tour.find(params[:tour_id])
+    @user = current_user
+    @booking = Booking.new
+    @booking.tour = @tour
+    @booking.user = @user
+    if @booking.save
+      redirect_to tour_path(@tour)
+    else
+      render 'tours/show'
+    end
 
-  def edit
-  end
-
-  def update
   end
 end

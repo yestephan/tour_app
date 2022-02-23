@@ -1,12 +1,9 @@
 class ToursController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_tour, only: [:show, :edit, :update, :destroy]
   def index
     @tours = Tour.all
   end
 
-  def show
-    # list the bookings?
-  end
 
   def new
     @tour = Tour.new
@@ -33,4 +30,5 @@ class ToursController < ApplicationController
   def set_tour
     @tour = Tour.find(params[:id])
   end
+
 end
