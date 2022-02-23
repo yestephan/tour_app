@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2022_02_23_140143) do
     t.float "latitude"
     t.float "longitude"
     t.string "picture"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_tours_on_user_id"
   end
 

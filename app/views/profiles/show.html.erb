@@ -1,64 +1,3 @@
-<<<<<<< HEAD
-<div class="user-profile row">
-  <div class="col-md-2">
-    <div class="row">
-      <%= image_tag @user.picture, class: "avatar-user" %>
-    </div>
-    <div class="row">
-      <a href="#">Update photo</a>
-    </div>
-    <div class="row">
-      <%= link_to "New tour", new_tour_path %>
-    </div>
-  </div>
-  <div class="col-md-10">
-    <div class="row">
-      <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
-    </div>
-    <div class="row">
-      <p>Member since 2015</p>
-    </div>
-    <div class="row">
-      <%= link_to "Edit profile", profile_edit_path %>
-    </div>
-    <div class="row">
-      <h5>About</h5>
-    </div>
-    <div class="row">
-      <p><%= @user.description %></p>
-    </div>
-    <div class="row">
-      <p><strong>Age: </strong><%= @user.age %></p>
-    </div>
-    <div class="row">
-      <p><strong>Email: </strong><%= @user.email %></p>
-    </div>
-    <div class="row">
-      <div class="col-md-10">
-        <h2>My tours</h2>
-      </div>
-    </div>
-    <div class="row">
-      <% @tours.each do |tour| %>
-        <div class="col-md-3 tour-card">
-          <div class="row">
-            <h6><%= tour.title %></h6>
-          </div>
-          <div class="row">
-            <p><%= tour.location %></p>
-          </div>
-          <div class="row">
-            <p><%= "#{tour.date.to_formatted_s(:short)} #{tour.start_time.to_formatted_s(:time)} - #{tour.duration / 3600} hours" %></p>
-          </div>
-          <div class="row">
-            <p><%= tour.language %></p>
-          </div>
-          <div class="row">
-            <p><%= number_to_currency(tour.price, :unit => "€ ", :separator => ",", :delimiter => ".") %></p>
-          </div>
-        </div>
-      <% end %>
-=======
 <div class="container">
 
   <div class="user-profile row gx-5">
@@ -122,7 +61,7 @@
           </div>
 
           <div class="row tour-location">
-            <small><%= "#{tour.location}" %></small>
+            <small><%= "#{tour.address}" %></small>
           </div>
 
           <div class="row">
@@ -141,7 +80,6 @@
         </div>
         <% end %>
       </div>
->>>>>>> master
     </div>
   </div>
 </div>
