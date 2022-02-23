@@ -1,8 +1,8 @@
 <div class="container">
 
-  <div class="user-profile row gx-5">
-    <div class="col-md-2 profile-left-panel">
-      <div class="row">
+  <div class="user-profile-container">
+    <div class="profile-left-panel">
+      <div>
         <% unless @user.picture.nil? %>
         <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill, class: "avatar-user") %>
         <% else %>
@@ -12,73 +12,47 @@
 
       <hr>
 
-      <div class="row button-wrapper">
+      <div class="button-wrapper">
         <%= link_to "Edit profile", profile_edit_path %>
       </div>
-      <div class="row button-wrapper">
+
+      <div class="button-wrapper">
         <%= link_to "New tour", new_tour_path %>
       </div>
     </div>
 
-    <div class="col-md-10">
-      <div class="row">
+    <div class="profile-content">
+      <div>
         <h2><%= "#{@user.first_name} #{@user.last_name}, #{@user.age}" %></h2>
       </div>
 
-      <div class="row">
+      <div>
         <small>Member since <%= @user.created_at.strftime("%Y") %></small>
       </div>
 
-      <div class="row">
-        <p><small><%= @user.email %></small></p>
+      <div>
+        <small><%= @user.email %></small>
       </div>
 
-      <div class="row">
+      <div>
         <h4>About</h4>
       </div>
 
-      <div class="row">
+      <div>
         <p><%= @user.description %></p>
       </div>
 
 
 
-      <div class="row">
+      <div>
         <div class="col-md-10">
           <h2>My tours</h2>
         </div>
       </div>
-      <div class="row gx-5 gy-5">
-        <% @user.tours.each do |tour| %>
-        <div class="col-md-3 tour-card">
-          <% unless tour.picture.nil? %>
-          <div class="row tour-card-header" style="background-image: url('<%= cl_image_path(tour.picture, :width => 330, :height => 320, :crop => :fill) %>')"></div>
-          <% else %>
-          <div class="row tour-card-header" style="background-image: url('https://picsum.photos/400/320')"></div>
-          <% end %>
-          <div class="row">
-            <strong><small><%= tour.title %></small></strong>
-          </div>
-
-          <div class="row tour-location">
-            <small><%= "#{tour.address}" %></small>
-          </div>
-
-          <div class="row">
-            <small><%= "#{tour.date.to_formatted_s(:short)} #{tour.start_time.to_formatted_s(:time)}" %></small>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <%= link_to "edit", edit_tour_path(tour) %>
-            </div>
-
-            <div class="col-md-6">
-              <%= link_to 'delete', tour_path(tour), method: :delete, data: { confirm: "Are you sure to delete?" } %>
-            </div>
-          </div>
-        </div>
-        <% end %>
+      <div class="user-tours-container">
+      <% @user.tours.each do |tour| %>
+        <%= render partial: "shared/profile-tour-card", locals: {tour: tour} %>
+      <% end %>
       </div>
     </div>
   </div>

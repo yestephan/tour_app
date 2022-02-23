@@ -1,0 +1,32 @@
+<div class="user-tour-card">
+<% unless tour.picture.nil? %>
+  <div class="tour-card-header" style="background-image: url('<%= cl_image_path(tour.picture, :width => 330, :height => 320, :crop => :fill) %>')"></div>
+<% else %>
+  <div class="tour-card-header" style="background-image: url('https://picsum.photos/400/320')"></div>
+<% end %>
+  <div>
+    <strong><small><%= tour.title %></small></strong>
+  </div>
+
+  <div class="tour-location">
+    <small><%= "#{tour.address}" %></small>
+  </div>
+
+  <div>
+    <small><%= "#{tour.date.to_formatted_s(:short)} #{tour.start_time.to_formatted_s(:time)}" %></small>
+  </div>
+
+  <div class="tour-options">
+    <div>
+      <%= link_to edit_tour_path(tour) do %>
+      <%= fa_icon "edit", text: "edit" %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to tour_path(tour), method: :delete, data: { confirm: "Are you sure to delete?" }  do %>
+      <%= fa_icon "trash", text: "delete" %>
+      <% end %>
+    </div>
+  </div>
+</div>
