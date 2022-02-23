@@ -1,5 +1,6 @@
 class ToursController < ApplicationController
-  # before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_tour, only: [:show, :edit, :update, :destroy]
+
   def index
     @tours = Tour.all
   end
