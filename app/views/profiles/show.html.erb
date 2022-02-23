@@ -65,16 +65,14 @@
     <div class="col-md-2 profile-left-panel">
       <div class="row">
         <% unless @user.picture.nil? %>
-        <%= image_tag @user.picture, class: "avatar-user" %>
+        <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill, class: "avatar-user") %>
         <% else %>
         <%= image_tag "https://picsum.photos/200", class: "avatar-user" %>
         <% end %>
       </div>
 
-      <div class="row button-wrapper">
-        <a href="#" class="small-link">Update photo</a>
-      </div>
       <hr>
+
       <div class="row button-wrapper">
         <%= link_to "Edit profile", profile_edit_path %>
       </div>
@@ -114,8 +112,11 @@
       <div class="row gx-5 gy-5">
         <% @user.tours.each do |tour| %>
         <div class="col-md-3 tour-card">
-          <div class="row tour-card-header" style="background-image: url('<%= cl_image_path(tour.picture, :width => 234, :height => 320, :crop => :fill) %>')"></div>
-
+          <% unless tour.picture.nil? %>
+          <div class="row tour-card-header" style="background-image: url('<%= cl_image_path(tour.picture, :width => 330, :height => 320, :crop => :fill) %>')"></div>
+          <% else %>
+          <div class="row tour-card-header" style="background-image: url('https://picsum.photos/400/320')"></div>
+          <% end %>
           <div class="row">
             <strong><small><%= tour.title %></small></strong>
           </div>

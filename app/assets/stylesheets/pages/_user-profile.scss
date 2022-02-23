@@ -20,8 +20,10 @@
 .avatar-user {
   border-radius: 50%;
   width: 120px;
+  height: 120px;
   margin: 0 auto;
   margin-bottom: 10px;
+  box-sizing: content-box;
 }
 
 .button-wrapper {
