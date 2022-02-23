@@ -74,4 +74,7 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 # dotenv gem for security.
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'
+
+# for image uploads
+gem 'cloudinary'
