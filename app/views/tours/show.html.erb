@@ -1,18 +1,15 @@
-<h1>Tour</h1>
-<ul>
- <li>
-  <%= @tour.title  %>
-  <%= @tour.description %>
-  <%= @tour.language %>
-  <%= @tour.price %>
-  <%= @tour.date %>
-    </li>
-      </ul>
+<div class="container">
+  <h1> <%= @tour.title %></h1>
 
+  <%= image_tag "https://source.unsplash.com/random/300x300/?tourism" %>
+  <ul>
+  <li>
+    <%= @tour.description %>
+    <%= @tour.language %>
+    <%= @tour.price %>
+    <%= @tour.date %>
+      </li>
+        </ul>
 
- <li><%= @booking.status %> </li>
-
-
-
-<%# #do some front-end like the list of the tours (done by Genie)
-#inside the booking controller/ booking view should be done here %>
+  <%= link_to "Book this tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary" %>
+</div>

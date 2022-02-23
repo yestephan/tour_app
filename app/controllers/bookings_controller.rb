@@ -14,9 +14,10 @@ class BookingsController < ApplicationController
     @user = current_user
     @booking = Booking.new(
       tour: @tour,
-      booking: @booking
+      user: @user
     )
     if @booking.save
+      flash[:notice] = "Booking accepted for #{@tour.title}"
       redirect_to tour_path(@tour)
     else
       render 'tours/show'
