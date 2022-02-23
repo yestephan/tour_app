@@ -58,7 +58,7 @@ before_action :authenticate_user!
   private
 
   def tour_params
-    received_params = params.require(:tour).permit(:title, :description, :location, :date, :price, :language, :start_time, :duration, :file)
+    received_params = params.require(:tour).permit(:title, :description, :address, :date, :price, :language, :start_time, :duration, :file)
 
     unless received_params[:file].nil?
       uploaded_picture = Cloudinary::Uploader.upload(received_params[:file].tempfile.path)
