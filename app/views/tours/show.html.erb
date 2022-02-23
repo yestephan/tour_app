@@ -1,15 +1,20 @@
-<div class="container">
-  <h1> <%= @tour.title %></h1>
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="tour-show-card border shadow d-flex">
+  <div class="">
+    <%= image_tag "https://source.unsplash.com/random/300x300/?tourism" %>
+  </div>
 
-  <%= image_tag "https://source.unsplash.com/random/300x300/?tourism" %>
-  <ul>
-  <li>
-    <%= @tour.description %>
-    <%= @tour.language %>
-    <%= @tour.price %>
-    <%= @tour.date %>
-      </li>
-        </ul>
+  <div class="ml-5 tour-show-info">
+    <h1> <%= @tour.title %></h1>
 
-  <%= link_to "Book this tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary" %>
+    <ul>
+      <li><%= @tour.description.present? ? @tour.description : "This tour has no description yet." %></li>
+      <li><%= @tour.language %></li>
+      <li><%= @tour.price %></li>
+      <li><%= @tour.date %></li>
+    </ul>
+
+    <%= link_to "Book this tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>

@@ -7,9 +7,10 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-User.destroy_all
+Booking.destroy_all
 Tour.destroy_all
+User.destroy_all
+
 
 # Create users using faker
 10.times do |_n|
@@ -38,11 +39,13 @@ users.each do |user|
     start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
     location = Faker::Address.city
     user_id = user.id
+    description = Faker::Lorem.sentence(word_count: 30)
     tour = Tour.new({
       title: title,
       duration: duration,
       language: language,
       location: location,
+      description: description,
       start_time: start_time,
       price: price,
       date: date,
