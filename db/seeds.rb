@@ -13,7 +13,7 @@ User.destroy_all
 
 
 # Create users using faker
-10.times do |_n|
+3.times do |_n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email
@@ -37,19 +37,21 @@ users.each do |user|
     price = 100
     date = Faker::Date.between(from: '2022-02-23', to: '2022-03-25')
     start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
-    location = Faker::Address.city
+    address = Faker::Address.city
+    picture = 'https://picsum.photos/400/400'
     user_id = user.id
     description = Faker::Lorem.sentence(word_count: 30)
     tour = Tour.new({
       title: title,
       duration: duration,
       language: language,
-      location: location,
       description: description,
+      address: address,
       start_time: start_time,
       price: price,
       date: date,
-      user_id: user_id
+      user_id: user_id,
+      picture: picture
     })
     tour.save
     puts "Created tour with the title: #{tour.title}, at #{tour.date}. 🌱"

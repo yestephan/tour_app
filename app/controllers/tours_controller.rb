@@ -1,10 +1,17 @@
 class ToursController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :set_tour, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!
 
   def index
     @tours = Tour.all
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @tours.geocoded.map do |tour| {
+        lat: tour.latitude,
+        lng: tour.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {
+          tour: tour }),
+        image_url: helpers.asset_url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1642&q=80")
+      }
+    end
   end
 
   def new
@@ -13,6 +20,7 @@ class ToursController < ApplicationController
 
   def create
     @user = current_user
+
     @tour = Tour.new(tour_params)
     @tour.user = @user
     @tour.save
@@ -50,7 +58,15 @@ class ToursController < ApplicationController
   private
 
   def tour_params
-    params.require(:tour).permit(:title, :description, :location, :date, :price, :language, :start_time, :duration)
+    received_params = params.require(:tour).permit(:title, :description, :location, :date, :price, :language, :start_time, :duration, :picture)
+
+    # picture still needs to be added to tour
+    unless received_params[:picture].nil?
+      uploaded_picture = Cloudinary::Uploader.upload(received_params[:picture].tempfile.path)
+      received_params[:picture] = uploaded_picture["public_id"]
+    end
+
+    return received_params
   end
 
   def set_tour
