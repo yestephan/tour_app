@@ -1,3 +1,33 @@
 .user-profile {
-  margin-top: 40px;
+  color: #484848;
+}
+
+.user-profile a {
+  color: #484848;
+}
+
+.tour-card-header {
+  height: 320px;
+  border-radius: 20px;
+}
+
+.profile-left-panel {
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  padding-top: 20px;
+}
+
+.avatar-user {
+  border-radius: 50%;
+  width: 120px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.button-wrapper {
+  text-align: center;
+}
+
+.small-link {
+  font-size: 12px;
 }

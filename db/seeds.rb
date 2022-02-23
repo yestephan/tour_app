@@ -18,7 +18,9 @@ Tour.destroy_all
   email = Faker::Internet.email
   picture = 'https://picsum.photos/200'
   password = "test1234"
-  user = User.new({first_name: first_name, last_name: last_name, email: email, password: password, picture: picture})
+  age = Faker::Number.between(from: 18, to: 70)
+  description = Faker::Movies::Lebowski.quote
+  user = User.new({first_name: first_name, last_name: last_name, email: email, password: password, picture: picture, age: age, description: description})
   user.save
   user.errors.messages
   puts "We just created #{user.first_name} 🌱"
