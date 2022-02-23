@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_02_23_113416) do
-=======
-ActiveRecord::Schema.define(version: 2022_02_23_113431) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2022_02_23_140143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +27,7 @@ ActiveRecord::Schema.define(version: 2022_02_23_113431) do
 
   create_table "tours", force: :cascade do |t|
     t.string "description"
-    t.string "location"
+    t.string "address"
     t.date "date"
     t.decimal "price"
     t.string "language"
@@ -41,11 +37,8 @@ ActiveRecord::Schema.define(version: 2022_02_23_113431) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-<<<<<<< HEAD
     t.float "latitude"
     t.float "longitude"
-=======
->>>>>>> master
     t.index ["user_id"], name: "index_tours_on_user_id"
   end
 

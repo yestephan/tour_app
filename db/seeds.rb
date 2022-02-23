@@ -36,13 +36,13 @@ users.each do |user|
     price = 100
     date = Faker::Date.between(from: '2022-02-23', to: '2022-03-25')
     start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
-    location = Faker::Address.city
+    address = Faker::Address.city
     user_id = user.id
     tour = Tour.new({
       title: title,
       duration: duration,
       language: language,
-      location: location,
+      address: address,
       start_time: start_time,
       price: price,
       date: date,
