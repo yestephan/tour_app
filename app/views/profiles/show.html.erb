@@ -23,7 +23,9 @@
 
     <div class="profile-content">
       <div>
-        <h2><%= "#{@user.first_name} #{@user.last_name}, #{@user.age}" %></h2>
+        <h2>
+          <%= "#{@user.first_name} #{@user.last_name}" %><%= ", #{@user.age}" unless @user.age.nil? %>
+        </h2>
       </div>
 
       <div>
@@ -34,6 +36,7 @@
         <small><%= @user.email %></small>
       </div>
 
+      <% unless @user.description.nil? || @user.description.empty? %>
       <div>
         <h4>About</h4>
       </div>
@@ -41,8 +44,7 @@
       <div>
         <p><%= @user.description %></p>
       </div>
-
-
+      <% end %>
 
       <div>
         <div class="col-md-10">
@@ -51,7 +53,7 @@
       </div>
       <div class="user-tours-container">
       <% @user.tours.each do |tour| %>
-        <%= render partial: "shared/profile-tour-card", locals: {tour: tour} %>
+        <%= render partial: "shared/profile_tour_card", locals: {tour: tour} %>
       <% end %>
       </div>
     </div>

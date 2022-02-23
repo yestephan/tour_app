@@ -25,7 +25,7 @@ before_action :authenticate_user!
     @tour.user = @user
     @tour.save
 
-    if @tour.save!
+    if @tour.save
       redirect_to profile_path
     else
       render :new
