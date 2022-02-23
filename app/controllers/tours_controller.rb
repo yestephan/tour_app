@@ -7,10 +7,6 @@ class ToursController < ApplicationController
     @tours = Tour.all
   end
 
-  def show
-    # list the bookings?
-  end
-
   def new
     @tour = Tour.new
   end
@@ -69,4 +65,5 @@ class ToursController < ApplicationController
   def set_tour
     @tour = Tour.find(params[:id])
   end
+
 end
