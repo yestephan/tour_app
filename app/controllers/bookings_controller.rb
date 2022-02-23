@@ -12,9 +12,10 @@ class BookingsController < ApplicationController
   def create
     @tour = Tour.find(params[:tour_id])
     @user = current_user
-    @booking = Booking.new
-    @booking.tour = @tour
-    @booking.user = @user
+    @booking = Booking.new(
+      tour: @tour,
+      booking: @booking
+    )
     if @booking.save
       redirect_to tour_path(@tour)
     else
