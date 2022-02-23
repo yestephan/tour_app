@@ -12,7 +12,7 @@ User.destroy_all
 Tour.destroy_all
 
 # Create users using faker
-10.times do |_n|
+3.times do |_n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email
