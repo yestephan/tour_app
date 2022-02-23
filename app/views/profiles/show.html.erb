@@ -114,7 +114,7 @@
       <div class="row gx-5 gy-5">
         <% @user.tours.each do |tour| %>
         <div class="col-md-3 tour-card">
-          <div class="row tour-card-header" style="background-image: url('https://picsum.photos/id/234/300/320')"></div>
+          <div class="row tour-card-header" style="background-image: url('<%= cl_image_path(tour.picture, :width => 234, :height => 320, :crop => :fill) %>')"></div>
 
           <div class="row">
             <strong><small><%= tour.title %></small></strong>

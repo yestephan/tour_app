@@ -13,6 +13,7 @@ class ToursController < ApplicationController
 
   def create
     @user = current_user
+
     @tour = Tour.new(tour_params)
     @tour.user = @user
     @tour.save
@@ -50,7 +51,15 @@ class ToursController < ApplicationController
   private
 
   def tour_params
-    params.require(:tour).permit(:title, :description, :location, :date, :price, :language, :start_time, :duration)
+    received_params = params.require(:tour).permit(:title, :description, :location, :date, :price, :language, :start_time, :duration, :picture)
+
+    # picture still needs to be added to tour
+    unless received_params[:picture].nil?
+      uploaded_picture = Cloudinary::Uploader.upload(received_params[:picture].tempfile.path)
+      received_params[:picture] = uploaded_picture["public_id"]
+    end
+
+    return received_params
   end
 
   def set_tour
