@@ -1,4 +1,6 @@
 class ToursController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,6 +16,7 @@ class ToursController < ApplicationController
   end
 
   def create
+    @user = current_user
     @tour = Tour.new(tour_params)
     @tour.user = @user
     @tour.save
@@ -26,11 +29,13 @@ class ToursController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @tour = Tour.find(params[:id])
     render :new
   end
 
   def update
+    @user = current_user
     @tour = Tour.find(params[:id])
     if @tour.update(tour_params)
       redirect_to profile_path
@@ -40,6 +45,7 @@ class ToursController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @tour = Tour.find(params[:id])
     @tour.destroy
     redirect_to profile_path
