@@ -1,5 +1,9 @@
+<div class="container-full">
+  <div class="container-tour">Yours</div>
+  <div class="map">map</div>
+</div>
 <div class="content text-center my-4">
-    <h2>Most popular tours</h2>
+  <h2>Most popular tours</h2>
 </div>
 <div class="container-image mb-5 bg-white rounded shadow h-200">
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -36,19 +40,17 @@
     </button>
   </div>
 </div>
-
 <div class="content text-center my-2">
-    <h2>Other tours</h2>
+  <h2>Other tours</h2>
 </div>
-
 <!--list the tours -->
 <div class="container my-5 bg-white rounded shadow h-400 flex-container">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  <% @tours.each do |tour| %>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="card-img-top">
-        <div class="card-body">
+    <% @tours.each do |tour| %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="card-img-top">
+          <div class="card-body">
             <ul class="card-title">
               <li><%= link_to tour.title, tour_path(tour) %></li>
               <li><%= tour.price %>€</li>
@@ -57,9 +59,9 @@
               <li><%= tour.date %></li>
               <li><%= tour.duration %></li>
             </ul>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
