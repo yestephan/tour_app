@@ -1,77 +1,84 @@
-<div class="user-profile row gx-5">
-  <div class="col-md-2 profile-left-panel">
-    <div class="row">
-      <%= image_tag @user.picture, class: "avatar-user" %>
-    </div>
+<div class="container">
 
-    <div class="row button-wrapper">
-      <a href="#" class="small-link">Update photo</a>
-    </div>
-    <hr>
-    <div class="row button-wrapper">
-      <%= link_to "Edit profile", profile_edit_path %>
-    </div>
-    <div class="row button-wrapper">
-      <%= link_to "New tour", new_tour_path %>
-    </div>
-  </div>
+  <div class="user-profile row gx-5">
+    <div class="col-md-2 profile-left-panel">
+      <div class="row">
+        <% unless @user.picture.nil? %>
+        <%= image_tag @user.picture, class: "avatar-user" %>
+        <% else %>
+        <%= image_tag "https://picsum.photos/200", class: "avatar-user" %>
+        <% end %>
+      </div>
 
-  <div class="col-md-10">
-    <div class="row">
-      <h2><%= "#{@user.first_name} #{@user.last_name}, #{@user.age}" %></h2>
-    </div>
-
-    <div class="row">
-      <small>Member since <%= @user.created_at.strftime("%Y") %></small>
-    </div>
-
-    <div class="row">
-      <p><small><%= @user.email %></small></p>
-    </div>
-
-    <div class="row">
-      <h5><strong>About</strong></h5>
-    </div>
-
-    <div class="row">
-      <p><%= @user.description %></p>
-    </div>
-
-
-
-    <div class="row">
-      <div class="col-md-10">
-        <h2>My tours</h2>
+      <div class="row button-wrapper">
+        <a href="#" class="small-link">Update photo</a>
+      </div>
+      <hr>
+      <div class="row button-wrapper">
+        <%= link_to "Edit profile", profile_edit_path %>
+      </div>
+      <div class="row button-wrapper">
+        <%= link_to "New tour", new_tour_path %>
       </div>
     </div>
-    <div class="row gx-5 gy-5">
-      <% @user.tours.each do |tour| %>
-      <div class="col-md-3 tour-card">
-        <div class="row tour-card-header" style="background-image: url('https://picsum.photos/id/234/300/320')"></div>
 
-        <div class="row">
-          <strong><small><%= tour.title %></small></strong>
-        </div>
+    <div class="col-md-10">
+      <div class="row">
+        <h2><%= "#{@user.first_name} #{@user.last_name}, #{@user.age}" %></h2>
+      </div>
 
-        <div class="row tour-location">
-          <small><%= "#{tour.location}" %></small>
-        </div>
+      <div class="row">
+        <small>Member since <%= @user.created_at.strftime("%Y") %></small>
+      </div>
 
-        <div class="row">
-          <small><%= "#{tour.date.to_formatted_s(:short)} #{tour.start_time.to_formatted_s(:time)}" %></small>
-        </div>
+      <div class="row">
+        <p><small><%= @user.email %></small></p>
+      </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <%= link_to "edit", edit_tour_path(tour) %>
-          </div>
+      <div class="row">
+        <h4>About</h4>
+      </div>
 
-          <div class="col-md-6">
-            <%= link_to 'delete', tour_path(tour), method: :delete, data: { confirm: "Are you sure to delete?" } %>
-          </div>
+      <div class="row">
+        <p><%= @user.description %></p>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-10">
+          <h2>My tours</h2>
         </div>
       </div>
-      <% end %>
+      <div class="row gx-5 gy-5">
+        <% @user.tours.each do |tour| %>
+        <div class="col-md-3 tour-card">
+          <div class="row tour-card-header" style="background-image: url('https://picsum.photos/id/234/300/320')"></div>
+
+          <div class="row">
+            <strong><small><%= tour.title %></small></strong>
+          </div>
+
+          <div class="row tour-location">
+            <small><%= "#{tour.location}" %></small>
+          </div>
+
+          <div class="row">
+            <small><%= "#{tour.date.to_formatted_s(:short)} #{tour.start_time.to_formatted_s(:time)}" %></small>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= link_to "edit", edit_tour_path(tour) %>
+            </div>
+
+            <div class="col-md-6">
+              <%= link_to 'delete', tour_path(tour), method: :delete, data: { confirm: "Are you sure to delete?" } %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
