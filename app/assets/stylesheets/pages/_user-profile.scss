@@ -129,7 +129,7 @@
 	margin: 10px 0;
 }
 
-.profile-tabs-content {
+.profile-tabs {
 	// background-color: bisque;
 	padding: 2rem 0rem;
 }
@@ -148,6 +148,7 @@
 		justify-content: center;
 		align-items: center;
 		margin-top: 0px;
+		cursor: pointer;
 
 		> * {
 			margin-top: 0rem;
@@ -166,4 +167,13 @@
 			background-color: $primary;
 		}
 	}
+}
+
+.profile-tabs-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.hidden {
+	display: none;
 }

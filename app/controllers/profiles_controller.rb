@@ -1,9 +1,16 @@
 class ProfilesController < ApplicationController
-
   before_action :authenticate_user!
 
   def show
     @user = current_user
+    @bookings = current_user.bookings
+    @tours = Tour.where(user: @user)
+    @all_applications = []
+    @tours.each do |tour|
+      Booking.where("tour_id = #{tour.id}").each do |booking|
+        @all_applications << booking
+      end
+    end
   end
 
   def edit

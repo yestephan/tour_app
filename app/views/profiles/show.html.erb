@@ -1,4 +1,6 @@
 <div class="container">
+  <div class="profile-container">
+  </div>
   <div class="user-profile-container">
     <div class="profile-left-panel">
       <div>
@@ -21,7 +23,6 @@
         <br>
         User id: <%= current_user.id %>
         <br>
-        <p><%= current_user.bookings %></p>
       </div>
       <div>
         <small><%= @user.email %></small>
@@ -35,21 +36,33 @@
         </div>
       <% end %>
       <hr class="rounded">
-      <div class="profile-tabs-content">
-        <div class="profile-tabs-container">
-          <div class="tab active">
+      <div class="profile-tabs" data-controller="tabs">
+        <div class="profile-tabs-container" data-tabs-target="alltabs">
+          <div class="tab active" data-target="bookings" data-tabs-target="tab" data-action="click->tabs#active">
             <h4>Bookings</h4>
           </div>
-          <div class="tab">
+          <div class="tab" data-target="tours" data-tabs-target="tab" data-action="click->tabs#active">
             <h4>Tours</h4>
           </div>
-          <div class="tab">
+          <div class="tab" data-target="pending" data-tabs-target="tab" data-action="click->tabs#active">
             <h4>Pending bookings</h4>
           </div>
         </div>
-        <div class="user-tours-container">
-          <% @user.tours.each do |tour| %> <%= render partial: "shared/profile_tour_card", locals:
-                {tour: tour} %> <% end %>
+        <div class="profile-tabs-content" data-tabs-target="allcontent">
+          <div class="" data-target="bookings" >
+            <%= @bookings %>
+          </div>
+          <div class="hidden" data-target="tours">
+            <p>Tours</p>
+          </div>
+          <div class="hidden" data-target="pending">
+            <p>Pending applications</p>
+            <% @all_applications.each do |element| %>
+              <%  @user = element.user %>
+              <% unless @user.picture.nil? %> <%= cl_image_tag(@user.picture, :width => 120, :height =>
+				120, :crop => :fill, class: "avatar-user") %> <% else %> <%= image_tag("profile.png", class: "avatar-user") %> <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
