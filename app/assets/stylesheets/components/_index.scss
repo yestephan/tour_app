@@ -11,15 +11,14 @@
 
 .container-full {
 	width: 100%;
-	padding: 2rem;
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
 }
 
 .container-tours {
+	padding: 2rem;
 	display: grid;
-	gap: 1rem;
+	gap: 0.5rem;
 	grid-template-columns: 1fr 1fr;
 	.grid-first-child {
 		grid-column: 1 / -1;
@@ -57,7 +56,7 @@
 	flex-direction: column;
 	gap: 4px;
 
-	:first-child {
+	.header h4 {
 		margin-top: 0.5rem;
 		font-size: 18px;
 		line-height: 1.2rem;
@@ -80,9 +79,7 @@
 	width: 100%;
 	height: 100vh;
 	background-color: aqua;
-	border-radius: 1rem;
 	overflow: hidden;
-	position: sticky;
 }
 
 @media only screen and (min-width: 760px) {
@@ -90,12 +87,14 @@
 		flex-direction: row;
 	}
 	.container-tours {
-		width: 67%;
+		width: 60%;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 
 	.map {
-		width: 33%;
-		height: calc(100vh - 8rem);
+		width: 40%;
+		height: calc(100vh - 66px);
+		position: sticky;
+		top: $value5;
 	}
 }
