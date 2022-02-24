@@ -4,6 +4,8 @@
 	position: sticky;
 	top: 0;
 	border-bottom: 1px solid rgb(241, 241, 241);
+	height: $value5;
+	z-index: 1000;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,5 +13,41 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-	width: 40px;
+	width: 88px;
+}
+
+.container-fluid {
+	padding-left: $value2;
+	padding-right: $value2;
+}
+
+.nav-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.nav-special {
+	padding: 0px 12px;
+	border-radius: 1.5rem;
+	background-color: white;
+
+	&:hover {
+		background-color: $light-grey;
+	}
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: $black;
+}
+
+.active {
+	background-color: $light-grey;
+}
+
+@media only screen and (min-width: 576px) {
+	.navbar-expand-sm .navbar-nav {
+		gap: 1rem;
+		justify-content: space-between;
+	}
 }
