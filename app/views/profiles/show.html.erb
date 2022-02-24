@@ -2,61 +2,55 @@
   <div class="user-profile-container">
     <div class="profile-left-panel">
       <div>
-        <% unless @user.picture.nil? %>
-        <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill, class: "avatar-user") %>
-        <% else %>
-          <%= image_tag "https://picsum.photos/200", class: "avatar-user" %>
-        <% end %>
+        <% unless @user.picture.nil? %> <%= cl_image_tag(@user.picture, :width => 120, :height =>
+				120, :crop => :fill, class: "avatar-user") %> <% else %> <%= image_tag("profile.png", class: "avatar-user") %> <% end %>
       </div>
-
-      <hr>
-
-      <div class="button-wrapper">
-        <%= link_to "Edit profile", profile_edit_path %>
-      </div>
-
-      <div class="button-wrapper">
-        <%= link_to "New tour", new_tour_path %>
-      </div>
+      <hr />
+      <div class="button-wrapper"><%= link_to "Edit profile", profile_edit_path %></div>
+      <div class="button-wrapper"><%= link_to "New tour", new_tour_path %></div>
     </div>
-
     <div class="profile-content">
       <div>
         <h2>
-          <%= "#{@user.first_name} #{@user.last_name}" %><%= ", #{@user.age}" unless @user.age.nil? %>
+          <%= "#{@user.first_name} #{@user.last_name}" %><%= ", #{@user.age}" unless @user.age.nil?
+					%>
         </h2>
       </div>
-
       <div>
         <small>Member since <%= @user.created_at.strftime("%Y") %></small>
+        <br>
+        User id: <%= current_user.id %>
+        <br>
+        <p><%= current_user.bookings %></p>
       </div>
-
       <div>
         <small><%= @user.email %></small>
       </div>
-
       <% unless @user.description.nil? || @user.description.empty? %>
-      <div>
-        <h4>About</h4>
-      </div>
-
-      <div>
-        <p><%= @user.description %></p>
-      </div>
-      <% end %>
-
-      <div>
-
-        <div class="col-md-10">
-          <h2>My tours</h2>
+        <div>
+          <h4>About</h4>
         </div>
-      </div>
-
-      <div class="user-tours-container">
-      <% @user.tours.each do |tour| %>
-        <%= render partial: "shared/profile_tour_card", locals: {tour: tour} %>
+        <div>
+          <p><%= @user.description %></p>
+        </div>
       <% end %>
-
+      <hr class="rounded">
+      <div class="profile-tabs-content">
+        <div class="profile-tabs-container">
+          <div class="tab active">
+            <h4>Bookings</h4>
+          </div>
+          <div class="tab">
+            <h4>Tours</h4>
+          </div>
+          <div class="tab">
+            <h4>Pending bookings</h4>
+          </div>
+        </div>
+        <div class="user-tours-container">
+          <% @user.tours.each do |tour| %> <%= render partial: "shared/profile_tour_card", locals:
+                {tour: tour} %> <% end %>
+        </div>
       </div>
     </div>
   </div>

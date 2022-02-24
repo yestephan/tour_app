@@ -28,6 +28,8 @@
       <p>Tour Description</p>
       <p >Language: <%= @tour.language %></p>
       <p><%= @tour.description %></p>
+      <p>Current user: <%= current_user.first_name %> <% current_user.last_name %> | <%= current_user.id %></p>
+      <p>Tour guide: <%= @tour.user.first_name %> <%= @tour.user.last_name %> | <%= @tour.user.id %></p>
     </div>
     <div class="col-sm-4 tour-booking-box">
       <div class="tour-booking-flex">
@@ -35,7 +37,10 @@
         <p> Time: <%= @tour.start_time %></p>
         <p> Duration: <%= @tour.duration %></p>
         <p class="price"> Price: <%= @tour.price %></p>
-        <%= link_to "Book This Tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary book-tour-btn" %>
+        <%= link_to "Book This Tour", tour_bookings_path(@tour), class: "btn btn-primary book-tour-btn",  method: :post %>
+        <%= simple_form_for [@tour, Booking.new] do |f|%>
+          <%= f.submit "Book this tour", class: "btn btn-primary book-tour-btn" %>
+        <% end %>
       </div>
     </div>
   </div>

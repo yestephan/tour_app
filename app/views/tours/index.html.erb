@@ -3,38 +3,25 @@
     <div class="container-tours-header">
       <div>
         <!-- Put search box here-->
-        <div class="row g-3">
-            <div class="col-sm-7">
-              <%= form_tag tours_path, method: :get do %>
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Find a location"
-                %>
-            </div>
-            <div class="col-sm-3">
-              <%= submit_tag "Search", class: "btn btn-primary" %>
-            </div>
-            <% end %>
-        </div>
+        <%= form_tag tours_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Location"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
       </div>
-      <div>
-        We found <%= @tours.count %>
-      </div>
-    <div class="m-3">
-       <h3>Here is the list of tours</h3>
+      <h2>We found <%= @tours.count %> tours</h2>
     </div>
-    </div>
-
     <!-- Tours index -->
     <div class="tour-grid">
       <% @tours.each do |tour| %>
-      <div class="user-tour-card">
-        <%= render partial: "shared/tour_card", locals: {tour: tour} %>
-      </div>
+        <div class="user-tour-card">
+          <%= render partial: "shared/tour_card", locals: {tour: tour} %>
+        </div>
       <% end %>
     </div>
-
   </div>
   <div class="map" data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
