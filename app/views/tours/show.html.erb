@@ -4,20 +4,24 @@
       <%= link_to "Back to Tours", tours_path, class: "btn btn-primary" %>
     </div>
   </div>
+  <% unless @tour.pictures.nil? || @tour.pictures.count == 0 %>
   <div class="row">
     <div class="images-container mb-3 d-flex">
-      <div class="left-side-image ml-3">
+      <% @pictures.each do |column| %>
+
+      <div class="left-side-image ml-3 bd-flex flex-column align-items-stretch">
+        <% column.each do |picture| %>
+        <div class="flex-shrink-1"
+              style="background-image: url('<%= cl_image_path(picture.image, :width => 350, :height => 450, :crop => :fill) %>'); width: 100%; height: <%= 100 / column.count %>%">
+              </div>
+        <% end %>
       </div>
-      <div class="middle-images ml-3 d-flex">
-        <div class="top-image">
-        </div>
-        <div class="bottom-image">
-        </div>
-      </div>
-      <div class="right-side-image ml-3">
-      </div>
+
+      <% end %>
     </div>
   </div>
+  <% end %>
+
   <div class="row">
     <div class="tour-description-box col-sm-8">
       <h3><%=@tour.title%></h3>
