@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2022_02_23_140143) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.string "picture"
     t.float "latitude"
     t.float "longitude"
+    t.string "picture"
     t.index ["user_id"], name: "index_tours_on_user_id"
   end
 
