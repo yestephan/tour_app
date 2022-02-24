@@ -1,5 +1,6 @@
 class Tour < ApplicationRecord
   belongs_to :user
+  has_many :pictures, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -10,5 +11,4 @@ class Tour < ApplicationRecord
   validates :duration, presence: true
   validates :language, presence: true
   validates :price, presence: true
-  validates :picture, presence: true
 end

@@ -92,9 +92,13 @@ users.each do |user|
       start_time: start_time,
       price: price,
       date: date,
-      user_id: user_id,
-      picture: picture
+      user_id: user_id
     })
+    4.times do |_m|
+      picture = Picture.new({image: 'https://picsum.photos/400/400'})
+      picture.tour = tour
+      picture.save
+    end
     tour.save!
     p "User: #{user.first_name} | Tour title: #{tour.title}, at #{tour.date}, Address: #{tour.address} 🌱"
   end

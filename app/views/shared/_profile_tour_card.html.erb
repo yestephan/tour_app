@@ -1,6 +1,6 @@
 <div class="user-tour-card">
-<% unless tour.picture.nil? %>
-  <div class="tour-card-header" style="background-image: url('<%= cl_image_path(tour.picture, :width => 330, :height => 320, :crop => :fill) %>')"></div>
+<% unless tour.pictures.first.nil? %>
+  <div class="tour-card-header" style="background-image: url('<%= cl_image_path(tour.pictures.first.image, :width => 330, :height => 320, :crop => :fill) %>')"></div>
 <% else %>
   <div class="tour-card-header" style="background-image: url('https://picsum.photos/400/320')"></div>
 <% end %>
