@@ -1,7 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80)">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1643177159923-94f0917f3dbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)">
   <div class="container">
     <h1>TourFind brings <strong>amazing journy</strong> to <strong>you</strong>!</h1>
     <p>Experience new things and travel around the world.</p>
-    <%= link_to "see more", tours_path, class: "btn btn-primary" %>
+
+    <div class="row g-3">
+        <div class="col-sm-7">
+          <%= form_tag tours_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a location"
+            %>
+        </div>
+        <div class="col-sm-3">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+    </div>
   </div>
 </div>
