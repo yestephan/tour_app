@@ -19,23 +19,23 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <% unless current_user.picture.nil? %>
-              <%= cl_image_tag(current_user.picture, :width => 40, :height => 40, :crop => :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
-            <% else %>
-              <%= image_tag "https://picsum.photos/200", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
+            <%# unless current_user.picture.nil? %>
+            <%#= cl_image_tag(current_user.picture, :width => 40, :height => 40, :crop => :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <%# else %>
+            <%#= image_tag "https://picsum.photos/200", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%# end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%=# link_to "Action", "#", class: "dropdown-item" %>
+              <%=# link_to "Another action", "#", class: "dropdown-item" %>
+              <%=# link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
-        <% else %>
+          <%# else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
-        <% end %>
-      </ul>
+          <%# end %>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
