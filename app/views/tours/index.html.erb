@@ -25,26 +25,16 @@
        <h3>Here is the list of tours</h3>
     </div>
     </div>
+
     <!-- Tours index -->
-    <% @tours.each do |tour| %>
-      <%= link_to tour_path(tour), class: "card-link" do %>
-        <div class="card-tour-container">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"/>
-          <div class="card-tour-content">
-            <div class="header">
-              <h4><%= tour.title %></h4>
-            </div>
-            <div class="details">
-              <p><%= tour.date %></p>
-              <p><%= tour.duration %></p>
-            </div>
-            <div>
-              <p><%= tour.price %>€</p>
-            </div>
-          </div>
-        </div>
+    <div class="tour-grid">
+      <% @tours.each do |tour| %>
+      <div class="user-tour-card">
+        <%= render partial: "shared/tour_card", locals: {tour: tour} %>
+      </div>
       <% end %>
-    <% end %>
+    </div>
+
   </div>
   <div class="map" data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
