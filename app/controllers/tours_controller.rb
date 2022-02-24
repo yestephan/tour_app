@@ -19,6 +19,9 @@ before_action :authenticate_user!
       @tours = Tour.all
     end
   end
+  def show
+    @tour = Tour.find_by(id: params[:id])
+  end
 
   def new
     @tour = Tour.new
