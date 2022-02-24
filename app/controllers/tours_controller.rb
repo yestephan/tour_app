@@ -25,7 +25,7 @@ before_action :authenticate_user!
     @tour.user = @user
     @tour.save
 
-    if @tour.save!
+    if @tour.save
       redirect_to profile_path
     else
       render :new
@@ -58,13 +58,14 @@ before_action :authenticate_user!
   private
 
   def tour_params
-    received_params = params.require(:tour).permit(:title, :description, :location, :date, :price, :language, :start_time, :duration, :picture)
+    received_params = params.require(:tour).permit(:title, :description, :address, :date, :price, :language, :start_time, :duration, :file)
 
-    # picture still needs to be added to tour
-    unless received_params[:picture].nil?
-      uploaded_picture = Cloudinary::Uploader.upload(received_params[:picture].tempfile.path)
+    unless received_params[:file].nil?
+      uploaded_picture = Cloudinary::Uploader.upload(received_params[:file].tempfile.path)
       received_params[:picture] = uploaded_picture["public_id"]
     end
+
+    received_params.delete(:file)
 
     return received_params
   end

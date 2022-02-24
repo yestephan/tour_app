@@ -12,3 +12,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/user-profile";
+
+.footer-links a {
+	color: #484848;
+	padding: 2px;
+}
