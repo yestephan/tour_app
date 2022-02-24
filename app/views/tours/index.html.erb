@@ -3,16 +3,27 @@
     <div class="container-tours-header">
       <div>
         <!-- Put search box here-->
-        <%= form_tag tours_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Location"
-          %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
+        <div class="row g-3">
+            <div class="col-sm-7">
+              <%= form_tag tours_path, method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Find a location"
+                %>
+            </div>
+            <div class="col-sm-3">
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            </div>
+            <% end %>
+        </div>
       </div>
-      <h2>We found <%= @tours.count %> tours</h2>
+      <div>
+        We found <%= @tours.count %>
+      </div>
+    <div class="m-3">
+       <h3>Here is the list of tours</h3>
+    </div>
     </div>
     <!-- Tours index -->
     <div class="tour-grid">
