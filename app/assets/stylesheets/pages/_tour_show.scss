@@ -12,7 +12,7 @@
 .images-container {
   width: 100%;
   padding: 20px;
-  border: 1px solid blue;
+  border: 1px solid lightgray;
 }
 
 .tour-description-box {
@@ -25,11 +25,12 @@
 .left-side-image {
   width: 33%;
   height: 400px;
-  background-color: aqua;
-  padding: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
 
   > div {
     background-position: center;
+    margin: 5px;
   }
 }
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="tour-form">
   <h1>Tour</h1>
   <%= simple_form_for @tour do |f| %>
     <% unless @tour.errors.nil? %>
@@ -50,7 +50,7 @@
       <div class="col-md-12">
         <div class="tour-picture-grid">
         <% @tour.pictures.each do |picture| %>
-          <div class="picture-item">
+          <div class="picture-item" id="picture-item-<%= picture.id %>">
             <%= cl_image_tag(picture.image, :width => 80, :height => 80, :crop => :fill) %>
             <a href="#" data-picture-id="<%= picture.id %>" class="tour-picture-delete"><%= fa_icon "trash", text: "delete" %></a>
           </div>
