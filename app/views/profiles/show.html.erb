@@ -18,6 +18,10 @@
       </div>
       <div>
         <small>Member since <%= @user.created_at.strftime("%Y") %></small>
+        <br>
+        User id: <%= current_user.id %>
+        <br>
+        <p><%= current_user.bookings %></p>
       </div>
       <div>
         <small><%= @user.email %></small>
@@ -40,13 +44,14 @@
             <h4>Tours</h4>
           </div>
           <div class="tab">
-            <h4>Pending booking</h4>
+            <h4>Pending bookings</h4>
           </div>
         </div>
         <div class="user-tours-container">
           <% @user.tours.each do |tour| %> <%= render partial: "shared/profile_tour_card", locals:
                 {tour: tour} %> <% end %>
         </div>
+        <br>
       </div>
     </div>
   </div>
