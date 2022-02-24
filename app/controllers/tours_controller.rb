@@ -57,6 +57,10 @@ before_action :authenticate_user!
     redirect_to profile_path
   end
 
+  def show
+    set_tour
+  end
+
   private
 
   def process_images(tour)
