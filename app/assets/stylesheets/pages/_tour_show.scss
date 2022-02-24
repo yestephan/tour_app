@@ -8,3 +8,68 @@
   // margin-bottom: 1rem;
   padding: 2rem;
 }
+
+.images-container {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid blue;
+}
+
+.tour-description-box {
+  height: 300px;
+}
+.tour-booking-box {
+  height: 300px;
+}
+
+.left-side-image {
+  width: 33%;
+  height: 400px;
+  background-color: aqua;
+  padding: 5px;
+
+  > div {
+    background-position: center;
+  }
+}
+
+.middle-images {
+  width: 33%;
+  height: 400px;
+  flex-direction: column;
+  padding: 0 20px;
+}
+.top-image{
+  width: 100%;
+  height: 60%;
+  border: 1px solid aqua;
+  padding-bottom: 10px;
+}
+
+.bottom-image{
+  width: 100%;
+  height: 40%;
+  border: 1px solid aqua;
+  padding-top: 10px;
+
+}
+
+.right-side-image {
+  width: 33%;
+  height: 400px;
+  background-color: orchid;
+
+}
+.tour-booking-flex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  p.price{
+    flex-grow: 1;
+  }
+}
+
+.book-tour-btn{
+  width: fit-content;
+
+}

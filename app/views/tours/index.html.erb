@@ -27,17 +27,14 @@
     <div class="list-title m-3">
        <h3>Here is the list of tours</h3>
     </div>
-    </div>
-
     <!-- Tours index -->
     <div class="tour-grid">
       <% @tours.each do |tour| %>
-      <div class="user-tour-card">
-        <%= render partial: "shared/tour_card", locals: {tour: tour} %>
-      </div>
+        <div class="user-tour-card">
+          <%= render partial: "shared/tour_card", locals: {tour: tour} %>
+        </div>
       <% end %>
     </div>
-
   </div>
   <div class="map" data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"

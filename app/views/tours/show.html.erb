@@ -1,20 +1,47 @@
-<div class="container d-flex justify-content-center align-items-center">
-  <div class="tour-show-card border shadow d-flex">
-  <div class="">
-    <%= image_tag "https://source.unsplash.com/random/300x300/?tourism" %>
+<div class="container ">
+  <div class="row">
+    <div class="mb-3">
+      <%= link_to "Back to Tours", tours_path, class: "btn btn-primary" %>
+    </div>
   </div>
+  <% unless @tour.pictures.nil? || @tour.pictures.count == 0 %>
+  <div class="row">
+    <div class="images-container mb-3 d-flex">
+      <% @pictures.each do |column| %>
 
-  <div class="ml-5 tour-show-info">
-    <h1> <%= @tour.title %></h1>
+      <div class="left-side-image ml-3 bd-flex flex-column align-items-stretch">
+        <% column.each do |picture| %>
+        <div class="flex-shrink-1"
+              style="background-image: url('<%= cl_image_path(picture.image, :width => 350, :height => 450, :crop => :fill) %>'); width: 100%; height: <%= 100 / column.count %>%">
+              </div>
+        <% end %>
+      </div>
 
-    <ul>
-      <li><%= @tour.description.present? ? @tour.description : "This tour has no description yet." %></li>
-      <li><%= @tour.language %></li>
-      <li><%= @tour.price %></li>
-      <li><%= @tour.date %></li>
-    </ul>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 
-    <%= link_to "Book this tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary" %>
+  <div class="row">
+    <div class="tour-description-box col-sm-8">
+      <h3><%=@tour.title%></h3>
+      <p>Tour Description</p>
+      <p >Language: <%= @tour.language %></p>
+      <p><%= @tour.description %></p>
+      <p>Current user: <%= current_user.first_name %> <% current_user.last_name %> | <%= current_user.id %></p>
+      <p>Tour guide: <%= @tour.user.first_name %> <%= @tour.user.last_name %> | <%= @tour.user.id %></p>
+    </div>
+    <div class="col-sm-4 tour-booking-box">
+      <div class="tour-booking-flex">
+        <p> Date: <%= @tour.date %></p>
+        <p> Time: <%= @tour.start_time %></p>
+        <p> Duration: <%= @tour.duration %></p>
+        <p class="price"> Price: <%= @tour.price %></p>
+        <%= link_to "Book This Tour", tour_bookings_path(@tour), class: "btn btn-primary book-tour-btn",  method: :post %>
+        <%= simple_form_for [@tour, Booking.new] do |f|%>
+          <%= f.submit "Book this tour", class: "btn btn-primary book-tour-btn" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

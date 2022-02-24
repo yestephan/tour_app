@@ -18,6 +18,9 @@ before_action :authenticate_user!
       @tours = Tour.all
     end
   end
+  def show
+    @tour = Tour.find_by(id: params[:id])
+  end
 
   def new
     @tour = Tour.new
@@ -64,6 +67,7 @@ before_action :authenticate_user!
 
   def show
     set_tour
+    set_gallery
   end
 
   private
@@ -86,6 +90,21 @@ before_action :authenticate_user!
 
   def set_tour
     @tour = Tour.find(params[:id])
+  end
+
+  def set_gallery
+    @pictures = []
+    @tour.pictures.each_with_index do |picture, index|
+      if index == 0 || index == 3
+        @pictures.append([picture])
+      elsif index == 1
+        @pictures.append([picture])
+      elsif index == 2
+        @pictures[1].append(picture)
+      else
+        break
+      end
+    end
   end
 
 end
