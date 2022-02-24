@@ -1,10 +1,13 @@
+<div class="container-title">
+
+</div>
 <div class="container-full">
   <div class="container-tours">
     <div class="container-tours-header">
-      <div>
+      <div class="container-search" id="search">
         <!-- Put search box here-->
         <div class="row g-3">
-            <div class="col-sm-7">
+            <div class="col-sm-8">
               <%= form_tag tours_path, method: :get do %>
                 <%= text_field_tag :query,
                   params[:query],
@@ -12,16 +15,16 @@
                   placeholder: "Find a location"
                 %>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <%= submit_tag "Search", class: "btn btn-primary" %>
             </div>
             <% end %>
         </div>
       </div>
-      <div>
-        We found <%= @tours.count %>
+      <div class="alert-container m-3 ms-5">
+        We found <%= @tours.count %> tours for you!
       </div>
-    <div class="m-3">
+    <div class="list-title m-3">
        <h3>Here is the list of tours</h3>
     </div>
     </div>
