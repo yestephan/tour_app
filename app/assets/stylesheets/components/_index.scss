@@ -20,9 +20,15 @@
 	display: grid;
 	gap: 0.5rem;
 	grid-template-columns: 1fr 1fr;
-	.grid-first-child {
+	> :first-child {
 		grid-column: 1 / -1;
 	}
+}
+
+.container-tours-header {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .card-tour-container {
