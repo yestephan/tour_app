@@ -1,3 +1,4 @@
+<!--
 <div class="container d-flex justify-content-center align-items-center">
   <div class="tour-show-card border shadow d-flex">
   <div class="">
@@ -15,6 +16,45 @@
     </ul>
 
     <%= link_to "Book this tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+-->
+<div class="container ">
+  <div class="row">
+    <div class="mb-3">
+      <%= link_to "Back to Tours", tours_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="images-container mb-3 d-flex">
+      <div class="left-side-image ml-3">
+      </div>
+      <div class="middle-images ml-3 d-flex">
+        <div class="top-image">
+        </div>
+        <div class="bottom-image">
+        </div>
+      </div>
+      <div class="right-side-image ml-3">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="tour-description-box col-sm-8">
+      <h3><%=@tour.title%></h3>
+      <p>Tour Description</p>
+      <p >Language: <%= @tour.language %></p>
+      <p><%= @tour.description %></p>
+    </div>
+    <div class="col-sm-4 tour-booking-box">
+      <div class="tour-booking-flex">
+        <p> Date: <%= @tour.date %></p>
+        <p> Time: <%= @tour.start_time %></p>
+        <p> Duration: <%= @tour.duration %></p>
+        <p class="price"> Price: <%= @tour.price %></p>
+        <%= link_to "Book This Tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary book-tour-btn" %>
+      </div>
     </div>
   </div>
 </div>
