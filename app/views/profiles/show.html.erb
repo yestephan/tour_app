@@ -1,15 +1,14 @@
 <div class="container">
-
   <div class="user-profile-container">
     <div class="profile-left-panel">
       <div>
         <% unless @user.picture.nil? %>
         <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill, class: "avatar-user") %>
         <% else %>
-        <%= image_tag "https://picsum.photos/200", class: "avatar-user" %>
+          <%= image_tag "https://picsum.photos/200", class: "avatar-user" %>
         <% end %>
       </div>
-
+      
       <hr>
 
       <div class="button-wrapper">
@@ -47,14 +46,17 @@
       <% end %>
 
       <div>
+
         <div class="col-md-10">
           <h2>My tours</h2>
         </div>
       </div>
+
       <div class="user-tours-container">
       <% @user.tours.each do |tour| %>
         <%= render partial: "shared/profile_tour_card", locals: {tour: tour} %>
       <% end %>
+
       </div>
     </div>
   </div>
