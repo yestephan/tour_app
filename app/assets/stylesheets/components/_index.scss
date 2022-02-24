@@ -19,10 +19,6 @@
 	padding: 2rem;
 	display: grid;
 	gap: 0.5rem;
-	grid-template-columns: 1fr 1fr;
-	> :first-child {
-		grid-column: 1 / -1;
-	}
 }
 
 .container-tours-header {
@@ -92,9 +88,9 @@
 	.container-full {
 		flex-direction: row;
 	}
+
 	.container-tours {
 		width: 60%;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 
 	.map {
