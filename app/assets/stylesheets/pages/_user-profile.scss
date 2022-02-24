@@ -1,27 +1,49 @@
-.user-profile {
+.user-profile-container {
   color: #484848;
-}
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+  gap: 40px;
 
-.user-profile a {
-  color: #484848;
+  a {
+    color: #484848;
+  }
+
+  h2 {
+    margin: 0;
+  }
 }
 
 .tour-card-header {
-  height: 320px;
+  height: 260px;
+  width: 100%;
   border-radius: 20px;
 }
 
 .profile-left-panel {
+  flex-basis: 200px;
   border: 1px solid lightgray;
   border-radius: 20px;
   padding-top: 20px;
+
+  > hr {
+    margin: 0 10px 10px;
+  }
+
+  > div {
+    text-align: center;
+    padding: 5px 0;
+  }
 }
 
 .avatar-user {
   border-radius: 50%;
   width: 120px;
+  height: 120px;
   margin: 0 auto;
   margin-bottom: 10px;
+  box-sizing: content-box;
 }
 
 .button-wrapper {
@@ -30,4 +52,44 @@
 
 .small-link {
   font-size: 12px;
+}
+
+.profile-content {
+  flex-grow: 2;
+}
+
+.user-tours-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.user-tour-card {
+  flex-basis: 210px;
+}
+
+.user-tour-card .tour-options {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  > div {
+    > a {
+      text-decoration: none;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  > div:last-child {
+    text-align: right;
+  }
 }

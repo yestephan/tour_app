@@ -1,6 +1,10 @@
 <div class="container">
   <h1>Tour</h1>
   <%= simple_form_for @tour do |f| %>
+    <% unless @tour.errors.nil? %>
+    <%= render 'shared/form_errors', object: @tour %>
+    <% end %>
+
     <div class="row gy-3">
       <div class="col-md-12">
         <%= f.label :title, "Title:" %>
@@ -8,8 +12,8 @@
       </div>
 
       <div class="col-md-12">
-        <%= f.label :location, "Location:" %>
-        <%= f.text_field :location, class: "form-control" %>
+        <%= f.label :address, "Address:" %>
+        <%= f.text_field :address, class: "form-control" %>
       </div>
 
       <div class="col-md-4">
@@ -43,8 +47,8 @@
       </div>
 
       <div class="col-md-12">
-        <%= f.label :picture, "Picture:" %>
-        <%= f.file_field :picture, class: "form-control" %>
+        <%= f.label :file, "Picture:" %>
+        <%= f.file_field :file, class: "form-control" %>
       </div>
 
       <div class="col-md-12">

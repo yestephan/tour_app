@@ -21,6 +21,15 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:user).permit(:first_name, :last_name, :age, :email, :description)
+    received_params = params.require(:user).permit(:first_name, :last_name, :age, :email, :description, :file)
+
+    unless received_params[:file].nil?
+      uploaded_picture = Cloudinary::Uploader.upload(received_params[:file].tempfile.path)
+      received_params[:picture] = uploaded_picture["public_id"]
+    end
+
+    received_params.delete(:file)
+
+    return received_params
   end
 end
