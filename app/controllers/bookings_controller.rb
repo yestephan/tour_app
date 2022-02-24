@@ -3,7 +3,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -17,7 +16,7 @@ class BookingsController < ApplicationController
       user: @user
     )
     if @booking.save
-      flash[:notice] = "Booking accepted for #{@tour.title}"
+      flash[:notice] = "You've requested to join #{@tour.title}. Your tour guide will get back to you in 24 hours."
       redirect_to tour_path(@tour)
     else
       render 'tours/show'

@@ -10,7 +10,7 @@ application.load(definitionsFromContext(context))
 
 
 const addPictureButton = document.getElementById('add-picture-field');
-if(addPictureButton !== undefined) {
+if(addPictureButton) {
   addPictureButton.addEventListener('click', (e) => {
     e.preventDefault();
     const toursFormContainer = document.getElementById('picture-fields-container');
