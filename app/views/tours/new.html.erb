@@ -46,10 +46,27 @@
         <%= f.text_area :description, class: "form-control" %>
       </div>
 
+      <% unless @tour.pictures.nil? || @tour.pictures.count == 0 %>
       <div class="col-md-12">
-        <%= f.label :file, "Picture:" %>
-        <%= f.file_field :file, class: "form-control" %>
+        <div class="tour-picture-grid">
+        <% @tour.pictures.each do |picture| %>
+          <div class="picture-item">
+            <%= cl_image_tag(picture.image, :width => 80, :height => 80, :crop => :fill) %>
+            <a href="#" data-picture-id="<%= picture.id %>" class="tour-picture-delete"><%= fa_icon "trash", text: "delete" %></a>
+          </div>
+        <% end %>
+        </div>
       </div>
+      <% end %>
+
+      <div class="col-md-12">
+        <%= f.label :files, "Pictures:" %>
+        <div id="picture-fields-container">
+          <%= f.file_field :files, multiple: true, name: "tour[files][]", class: "form-control" %>
+        </div>
+        <a href="" id="add-picture-field"><%= fa_icon "plus" %> Add another image</a>
+      </div>
+
 
       <div class="col-md-12">
         <%= f.submit "Submit", class: "btn btn-primary" %>

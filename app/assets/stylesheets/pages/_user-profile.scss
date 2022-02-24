@@ -93,3 +93,26 @@
     text-align: right;
   }
 }
+
+
+/*** TOUR ***/
+
+.tour-picture-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+
+  .picture-item {
+    flex-basis: 80px;
+    aspect-ratio: 1;
+  }
+}
+
+#picture-fields-container input {
+  margin: 10px 0;
+}

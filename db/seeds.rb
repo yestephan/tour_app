@@ -38,7 +38,6 @@ users.each do |user|
     date = Faker::Date.between(from: '2022-02-23', to: '2022-03-25')
     start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
     address = Faker::Address.city
-    picture = 'https://picsum.photos/400/400'
     user_id = user.id
     description = Faker::Lorem.sentence(word_count: 30)
     tour = Tour.new({
@@ -50,10 +49,14 @@ users.each do |user|
       start_time: start_time,
       price: price,
       date: date,
-      user_id: user_id,
-      picture: picture
+      user_id: user_id
     })
     tour.save
+    4.times do |_m|
+      picture = Picture.new({image: 'https://picsum.photos/400/400'})
+      picture.tour = tour
+      picture.save
+    end
     puts "Created tour with the title: #{tour.title}, at #{tour.date}. 🌱"
   end
 end
