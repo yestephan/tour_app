@@ -13,6 +13,6 @@ import "bootstrap"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-document.addEventListener('turbolinks:load', () => {
-  console.log('hello')
-});
+// document.addEventListener('turbolinks:load', () => {
+//   console.log('hello')
+// });

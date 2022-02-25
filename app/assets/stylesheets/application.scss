@@ -13,6 +13,11 @@
 @import "components/index";
 @import "pages";
 @import "pages/user-profile";
+@import "pages/tours-index";
+
+footer {
+  padding: 20px;
+}
 
 .footer-links a {
 	color: #484848;
