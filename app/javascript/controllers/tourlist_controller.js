@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect () {
     console.log("Hello")
+    this.listTarget.style.display = 'block';
   }
 
   toggleTab(event) {
