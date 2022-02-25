@@ -1,21 +1,25 @@
+<div class="banner-container">
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))>
   <div class="container">
-    <h1>TourFind brings <strong>amazing journy</strong> to <strong>you</strong>!</h1>
+    <h1>Guidy brings <strong>amazing journey</strong> to <strong>you</strong>!</h1>
     <p>Experience new things and travel around the world.</p>
 
-    <div class="row g-3">
-        <div class="col-sm-7">
+    <div class="row g-3 text-center w-100 justify-content-around">
+
           <%= form_tag tours_path, method: :get do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Find a location"
             %>
-        </div>
-        <div class="col-sm-3">
+
           <%= submit_tag "Search", class: "btn btn-primary" %>
-        </div>
+
         <% end %>
+        </div>
+
+        </div>
     </div>
   </div>
+</div>
 </div>
