@@ -51,9 +51,6 @@
                       <p><%= tour.date.to_formatted_s(:short) %></p>
                       <p><%= tour.price %></p>
                       <p><%= tour.description %></p>
-                      <br>
-                      <%= link_to "Edit tour", edit_tour_path(tour), class: "gbtn gbtn-secondary"%>
-                      <br>
                     </div>
                   </div>
                 </div>
@@ -73,6 +70,9 @@
                       <p><%= tour.date.to_formatted_s(:short) %></p>
                       <p><%= tour.price %></p>
                       <p><%= tour.description %></p>
+                      <br>
+                      <%= link_to "Edit tour", edit_tour_path(tour), class: "gbtn gbtn-secondary"%>
+                      <br>
                     </div>
                   </div>
                 </div>
