@@ -45,6 +45,10 @@
 	background-color: $light-grey;
 }
 
+.dropdown-item-custom {
+  padding: 1rem 0.75rem;
+}
+
 @media only screen and (min-width: 576px) {
 	.navbar-expand-sm .navbar-nav {
 		gap: 1rem;
