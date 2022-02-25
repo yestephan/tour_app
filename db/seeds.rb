@@ -76,7 +76,7 @@ users.each do |user|
     language = "English"
     duration = 7200
     price = rand(250)
-    date = Faker::Date.between(from: '2022-02-23', to: '2022-03-25')
+    date = Faker::Date.between(from: '2022-02-26', to: '2022-03-25')
     start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
     address = ADDRESSES[number]
     number += 1
@@ -104,7 +104,9 @@ users.each do |user|
   end
 end
 
+@tours = Tour.all
 10.times do |_n|
+  tour = @tours[rand(0..9)]
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email
@@ -112,5 +114,16 @@ end
   user = User.new({first_name: first_name, last_name: last_name, email: email, password: password})
   user.save
   user.errors.messages
-  puts "We just created #{user.first_name} 🌱"
+  booking = Booking.new({user_id: user.id, tour_id: tour.id})
+  booking.save!
+  puts "We just created #{user.first_name} | And made a booking: #{booking.id} 🌱"
 end
+
+test_user = User.where("email = 'test@email.com'")[0]
+# puts test_user.email
+last_tour = Tour.last
+last_tour.user_id = test_user.id
+last_tour.save
+Booking.create({user_id: user.id, tour_id: last_tour.id})
+booking_test = Booking.where("user_id = #{test_user.id}")
+puts "Booking created or test_user - #{test_user.first_name} - #{test_user.email} | #{booking_test}"
