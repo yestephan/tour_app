@@ -1,0 +1,37 @@
+.gbtn {
+	font-size: 0.875rem;
+	text-align: center;
+	color: white;
+	padding: 1.25rem 1rem;
+	font-weight: 600;
+	border: none;
+	background-color: $primary;
+	border-radius: 0.5rem;
+	text-decoration: none;
+	&:hover {
+		background-color: $primary-hover;
+		color: white;
+	}
+}
+
+.gbtn-secondary {
+	background-color: white;
+	color: $primary;
+	border: 1px solid $primary;
+
+	&:hover {
+		border: none;
+	}
+}
+
+.gbtn-link {
+	padding: 0;
+	border: none;
+	color: $primary;
+	font-weight: 500;
+
+	&:hover {
+		color: $primary-hover;
+		background-color: white;
+	}
+}
