@@ -18,9 +18,13 @@
           </div>
         <% end %>
       </div>
-      <h2>We found <%= @tours.count %> tours</h2>
+      <h3>We found <span><%= @tours.count %> </span>tours for you</h3>
     </div>
     <!-- Tours index -->
+    <div class="tour-header m-2">
+    <h2>List of the tours</h2>
+    <hr>
+    </div>
     <div class="tour-grid">
       <% @tours.each do |tour| %>
         <div class="user-tour-card">
