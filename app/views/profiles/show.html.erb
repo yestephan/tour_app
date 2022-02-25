@@ -78,11 +78,24 @@
             <% end %>
           </div>
           <div class="hidden" data-target="pending">
-            <p>Pending applications</p>
+            <hr class="break">
             <% @all_applications.each do |element| %>
               <%  @user = element.user %>
-              <% unless @user.picture.nil? %> <%= cl_image_tag(@user.picture, :width => 120, :height =>
-          120, :crop => :fill, class: "avatar-user") %> <% else %> <%= image_tag("profile.png", class: "avatar-user") %> <% end %>
+              <div class="prof-list-row row-small">
+                <div class="prof-list-card-user">
+                  <% unless @user.picture.nil? %>
+                    <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill) %>
+                  <% else %>
+                    <%= image_tag("profile.png") %>
+                  <% end %>
+                  <div class="prof-list-container">
+                    <div class="prof-list-content">
+                      <h3 class="no-margin"><%= @user.first_name %></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="break">
             <% end %>
           </div>
         </div>
