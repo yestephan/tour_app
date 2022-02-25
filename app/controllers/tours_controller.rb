@@ -31,9 +31,10 @@ before_action :authenticate_user!
     @user = current_user
 
     @tour = Tour.new(tour_params)
-    process_images(@tour)
     @tour.user = @user
     @tour.save
+
+    process_images(@tour)
 
     if @tour.save
       redirect_to profile_path
