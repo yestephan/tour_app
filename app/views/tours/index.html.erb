@@ -1,5 +1,5 @@
 <div class="container-full">
-  <div class="container-tours">
+  <div data-controller="tourlist" class="container-tours">
     <div class="container-tours-header">
       <div>
         <!-- Put search box here-->
@@ -21,18 +21,32 @@
       <h3>We found <span><%= @tours.count %> </span>tours for you</h3>
     </div>
     <!-- Tours index -->
-    <div class="tour-header m-2">
-    <h2>List of the tours</h2>
-    <hr>
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" data-action="click->tourlist#toggleTab" data-target="list">List of the tours</button>
+      <button class="tablinks" data-action="click->tourlist#toggleTab" data-target="more">More</button>
     </div>
-    <div class="tour-grid">
+
+    <!-- Tab content -->
+    <div class="tabcontent" data-tourlist-target="list">
+      <div class="tour-grid">
+        <% @tours.each do |tour| %>
+          <div class="user-tour-card">
+            <%= render partial: "shared/tour_card", locals: {tour: tour} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="tabcontent" data-tourlist-target="more">
       <% @tours.each do |tour| %>
-        <div class="user-tour-card">
-          <%= render partial: "shared/tour_card", locals: {tour: tour} %>
-        </div>
-      <% end %>
+          <div class="user-tour-card">
+            <%= render partial: "shared/tour_card", locals: {tour: tour} %>
+          </div>
+        <% end %>
     </div>
   </div>
+
+  <!-- Map -->
   <div class="map" data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
