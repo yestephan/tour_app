@@ -25,11 +25,13 @@
       </div>
     </div>
     <div class="tabcontent" data-tourlist-target="more">
+      <div class="tour-grid">
       <% @tours.each do |tour| %>
           <div class="user-tour-card">
             <%= render partial: "shared/tour_card", locals: {tour: tour} %>
           </div>
         <% end %>
+        </div>
     </div>
   </div>
 
