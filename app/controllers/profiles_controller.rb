@@ -4,6 +4,10 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
     @bookings = current_user.bookings
+    @booked = []
+    @bookings.each do |b|
+      @booked << Tour.find(b.tour_id)
+    end
     @tours = Tour.where(user: @user)
     @all_applications = []
     @tours.each do |tour|

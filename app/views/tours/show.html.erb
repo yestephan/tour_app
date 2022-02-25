@@ -4,29 +4,24 @@
       <%= link_to "Back to Tours", tours_path, class: "btn btn-primary" %>
     </div>
   </div>
-
   <div>
     <h3><%=@tour.title%></h3>
   </div>
-
   <% unless @tour.pictures.nil? || @tour.pictures.count == 0 %>
-  <div class="row g-0">
-    <div class="images-container mb-3 d-flex">
-      <% @pictures.each do |column| %>
-
-      <div class="left-side-image ml-3 bd-flex flex-column align-items-stretch">
-        <% column.each do |picture| %>
-        <div class="flex-shrink-1"
+    <div class="row g-0">
+      <div class="images-container mb-3 d-flex">
+        <% @tour.pictures.each do |column| %>
+          <div class="left-side-image ml-3 bd-flex flex-column align-items-stretch">
+            <% column.each do |picture| %>
+              <div class="flex-shrink-1"
               style="background-image: url('<%= cl_image_path(picture.image, :width => 600, :height => 450, :crop => :fill) %>'); width: 100%; height: <%= 100 / column.count %>%">
               </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
-
-      <% end %>
     </div>
-  </div>
   <% end %>
-
   <div class="row g-0">
     <div class="tour-description-box col-sm-8">
       <div class="tour-guide-info row g-0">
@@ -36,42 +31,35 @@
         </div>
         <div class="col-md-2">
           <% unless @tour.user.picture.nil? %>
-          <%= cl_image_tag(@tour.user.picture, :width => 40, :height => 40, :crop => :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <%= cl_image_tag(@tour.user.picture, :width => 40, :height => 40, :crop => :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <% else %>
-          <%= image_tag "https://picsum.photos/200", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://picsum.photos/200", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
         </div>
         <hr>
       </div>
-
       <div>
         <strong>Tour Description</strong>
       </div>
-
       <div>
         <p><%= @tour.description %></p>
       </div>
     </div>
-
     <div class="col-sm-4 tour-booking-box">
       <div class="tour-booking-flex">
         <p class="tour-price"><%= number_to_currency(@tour.price, unit: "€", separator: ",", delimiter: ".") %></p>
-
         <div>
           <strong>Date & Time</strong>
           <p><%= "#{@tour.date.to_formatted_s(:rfc822)} #{@tour.start_time.to_formatted_s(:time)}" %></p>
         </div>
-
         <div>
           <strong>Duration</strong>
           <p>Aprox. <%= @tour.duration %>hr</p>
         </div>
-
         <div>
           <strong>Location</strong>
           <p><%= @tour.address %></p>
         </div>
-
         <%= link_to "Book This Tour", tour_bookings_path(@tour), method: :post, class: "btn btn-primary book-tour-btn" %>
       </div>
     </div>
