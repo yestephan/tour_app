@@ -10,7 +10,7 @@
   <% unless @tour.pictures.nil? || @tour.pictures.count == 0 %>
     <div class="row g-0">
       <div class="images-container mb-3 d-flex">
-        <% @tour.pictures.each do |column| %>
+        <% @pictures.each do |column| %>
           <div class="left-side-image ml-3 bd-flex flex-column align-items-stretch">
             <% column.each do |picture| %>
               <div class="flex-shrink-1"
