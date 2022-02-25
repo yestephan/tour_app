@@ -1,22 +1,39 @@
+.banner-container{
+  width: 100vw;
+  padding: 0 50px;
+}
+
 .banner {
-  background-size: cover;
-  background-position: center;
   padding: 150px 0;
   font-family: 'Playball', cursive;
+  // background-image: url("landing-page.jpg");
+  text-align: center;
+  background: rgba(0, 0, 0, .2) url('landing-page.jpg');
+background-blend-mode: darken;
+background-size: cover;
+  background-position: center;
 }
 
 .banner h1 {
+  font-family: 'Original Surfer', cursive;
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  font-size: 45px;
   font-weight: bold;
-  font-family: 'Abril Fatface', cursive;
+  // font-family: 'Abril Fatface', cursive;
 }
 
 .banner p {
-  font-size: 20px;
+  font-size: 25px;
   color: white;
-  opacity: .7;
+  opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'roboto', sans-serif;
+}
+
+.banner form{
+  display: flex;
+  width: 50%;
+
 }
