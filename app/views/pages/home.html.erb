@@ -4,18 +4,10 @@
     <p>Experience new things and travel around the world.</p>
 
     <div class="row g-3">
-        <div class="col-sm-7">
-          <%= form_tag tours_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Find a location"
-            %>
-        </div>
-        <div class="col-sm-3">
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        </div>
-        <% end %>
+      <div class="col-md-8">
+        <%= render "shared/search_form" %>
+      </div>
+      <div class="col-md-4"></div>
     </div>
   </div>
 </div>
