@@ -15,13 +15,6 @@
   border: 1px solid lightgray;
 }
 
-.tour-description-box {
-  height: 300px;
-}
-.tour-booking-box {
-  height: 300px;
-}
-
 .left-side-image {
   width: 33%;
   height: 400px;
@@ -64,7 +57,9 @@
 .tour-booking-flex {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  border: 1px solid lightgray;
+  padding: 20px;
+
   p.price{
     flex-grow: 1;
   }
@@ -73,4 +68,20 @@
 .book-tour-btn{
   width: fit-content;
 
+}
+
+.tour-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tour-guide-info {
+  padding-bottom: 20px;
+}
+
+.tour-guide-info hr {
+  width: 90%;
+  border: none;
+  height: 1px;
+  background: gray;
 }
