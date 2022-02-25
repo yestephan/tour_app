@@ -1,55 +1,103 @@
-<div class="container">
-  <div class="user-profile-container">
-    <div class="profile-left-panel">
-      <div>
-        <% unless @user.picture.nil? %> <%= cl_image_tag(@user.picture, :width => 120, :height =>
-				120, :crop => :fill, class: "avatar-user") %> <% else %> <%= image_tag("profile.png", class: "avatar-user") %> <% end %>
-      </div>
-      <hr />
-      <div class="button-wrapper"><%= link_to "Edit profile", profile_edit_path %></div>
-      <div class="button-wrapper"><%= link_to "New tour", new_tour_path %></div>
-    </div>
-    <div class="profile-content">
-      <div>
-        <h2>
-          <%= "#{@user.first_name} #{@user.last_name}" %><%= ", #{@user.age}" unless @user.age.nil?
-					%>
-        </h2>
-      </div>
-      <div>
-        <small>Member since <%= @user.created_at.strftime("%Y") %></small>
-        <br>
-        User id: <%= current_user.id %>
-        <br>
-        <p><%= current_user.bookings %></p>
-      </div>
-      <div>
-        <small><%= @user.email %></small>
-      </div>
-      <% unless @user.description.nil? || @user.description.empty? %>
-        <div>
-          <h4>About</h4>
-        </div>
-        <div>
-          <p><%= @user.description %></p>
-        </div>
+<div class="prof-container-main">
+  <div class="prof-container">
+    <div class="prof-avatar-section">
+      <% unless @user.picture.nil? %>
+        <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill, class: "avatar-user") %>
+      <% else %>
+        <%= image_tag("profile.png", class: "avatar-user") %>
       <% end %>
-      <hr class="rounded">
-      <div class="profile-tabs-content">
-        <div class="profile-tabs-container">
-          <div class="tab active">
+      <%= link_to "Edit profile", profile_edit_path, class: "gbtn gbtn-link" %>
+      <%= link_to "+ Add tour", new_tour_path, class: "gbtn gbtn-primary" %>
+    </div>
+    <div class="prof-main">
+      <div class="prof-details">
+        <h2 style="margin-bottom: 0px">Hi <%= "#{@user.first_name} #{@user.last_name}" %>!</h2>
+        <div class="prof-list-content">
+          <h3 class="no-margin">User details</h3>
+          <p><strong>Member since: </strong><%= current_user.created_at.strftime("%Y") %></p>
+          <p><strong>User id: </strong><%= current_user.id %></p>
+          <p><strong>Email: </strong><%= current_user.email %></p>
+        </div>
+        <% unless @user.description.nil? || @user.description.empty? %>
+          <div class="prof-list-content">
+            <h3 class="no-margin">About</h3>
+            <p><%= @user.description %></p>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div class="profile-tabs" data-controller="tabs">
+        <div class="profile-tabs-container" data-tabs-target="alltabs">
+          <div class="tab active" data-target="bookings" data-tabs-target="tab" data-action="click->tabs#active">
             <h4>Bookings</h4>
           </div>
-          <div class="tab">
+          <div class="tab" data-target="tours" data-tabs-target="tab" data-action="click->tabs#active">
             <h4>Tours</h4>
           </div>
-          <div class="tab">
+          <div class="tab" data-target="pending" data-tabs-target="tab" data-action="click->tabs#active">
             <h4>Pending bookings</h4>
           </div>
         </div>
-        <div class="user-tours-container">
-          <% @user.tours.each do |tour| %> <%= render partial: "shared/profile_tour_card", locals:
-                {tour: tour} %> <% end %>
+        <div class="profile-tabs-content" data-tabs-target="allcontent">
+          <div class="" data-target="bookings" >
+            <hr class="break">
+            <% @booked.each do |tour| %>
+              <div class="prof-list-row">
+                <div class="prof-list-card">
+                  <%= cl_image_tag(tour.pictures.first.image, height: 1000, width: 1000, crop: :fill) %>
+                  <div class="prof-list-container">
+                    <div class="prof-list-content">
+                      <h3 class="no-margin"><%= tour.title %></h3>
+                      <p><%= tour.date.to_formatted_s(:short) %></p>
+                      <p><%= tour.price %></p>
+                      <p><%= tour.description %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="break">
+            <% end %>
+          </div>
+          <div class="hidden" data-target="tours">
+            <hr class="break">
+            <% @tours.each do |tour| %>
+              <div class="prof-list-row">
+                <div class="prof-list-card">
+                  <%= cl_image_tag(tour.pictures.first.image, height: 1000, width: 1000, crop: :fill) %>
+                  <div class="prof-list-container">
+                    <div class="prof-list-content">
+                      <h3 class="no-margin"><%= tour.title %></h3>
+                      <p><%= tour.date.to_formatted_s(:short) %></p>
+                      <p><%= tour.price %></p>
+                      <p><%= tour.description %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="break">
+            <% end %>
+          </div>
+          <div class="hidden" data-target="pending">
+            <hr class="break">
+            <% @all_applications.each do |element| %>
+              <%  @user = element.user %>
+              <div class="prof-list-row row-small">
+                <div class="prof-list-card-user">
+                  <% unless @user.picture.nil? %>
+                    <%= cl_image_tag(@user.picture, :width => 120, :height => 120, :crop => :fill) %>
+                  <% else %>
+                    <%= image_tag("profile.png") %>
+                  <% end %>
+                  <div class="prof-list-container">
+                    <div class="prof-list-content">
+                      <h3 class="no-margin"><%= @user.first_name %></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="break">
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
